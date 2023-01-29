@@ -126,7 +126,6 @@ capabilities:
       # QUERY END #
     - contract_id: "cdfs:txne:tokenvm:health"
     - contract_id: "cdfs:txne:health"
-    - contract_id: cdfs:txne:newNew
 # INTERNAL QUERY END #
 
 triggers:
@@ -394,11 +393,7 @@ triggers:
       authorizer: "golang:jwtauth"
       authorizer_expression: |
         claims.Valid(Now()) && claims.Set.token_type=="service_user_access" && "cdfs:txne.query" in claims.Set.permission
-    - trigger: abesh:httpserver2
-      service: cdfs:txne:newNew
-      trigger_values:
-        method: POST
-        path: /
+    
 # INTERNAL MUTATION END #
 
 # START ALL CONTRACT#
