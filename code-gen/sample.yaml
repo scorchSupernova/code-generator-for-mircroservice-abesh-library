@@ -1,0 +1,6 @@
+packageName: "newnew"
+contractText: "cdfs:txne:newNew"
+capabilityStruct: "NewNew"
+apiMethod: "POST"
+triggerText: "abesh:httpserver2"
+path: "/"
