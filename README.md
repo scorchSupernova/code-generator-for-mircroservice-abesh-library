@@ -11,4 +11,4 @@ You just need to give those informations, and code-gen will handle all other tas
     3. After that, just hit go run main.go and you are done.
 
 
-This code-gen is created for abesh-library which is being used in microservice(by top MFS and DFS company).
+This code-gen is created for abesh-library which is being used in microservice(by top MFS and DFS companies).
