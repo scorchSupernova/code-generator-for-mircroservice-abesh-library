@@ -32,7 +32,6 @@ func createFilePath(data map[string]string) string {
 }
 
 func updateToken(data map[string]string, fileList []string, nameList []string, idx int, conventionList []string) bool {
-	fmt.Println("NameList: ", nameList)
 	for _, v := range fileList {
 		readFile := ""
 		if idx == 0 {
@@ -45,7 +44,6 @@ func updateToken(data map[string]string, fileList []string, nameList []string, i
 			}
 
 		}
-		fmt.Println("readFile: ", readFile)
 
 		input, errReadFile := ioutil.ReadFile(readFile)
 		if errReadFile != nil {
@@ -60,8 +58,6 @@ func updateToken(data map[string]string, fileList []string, nameList []string, i
 			fileName = filePath + data["packageName"] + ".go"
 		}
 
-		fmt.Println("fileName: ", fileName)
-
 		replaceText_ := bytes.Replace(input, []byte(conventionList[idx]), []byte(nameList[idx]), -1)
 
 		errFile_ := ioutil.WriteFile(fileName, replaceText_, 0666)
@@ -71,6 +67,7 @@ func updateToken(data map[string]string, fileList []string, nameList []string, i
 		}
 	}
 
+	log.Println("File Creation Successful!!")
 	return true
 
 }
@@ -135,11 +132,8 @@ func createTriggersAndCapabilities(data map[string]string) bool {
 	method_ := data["apiMethod"]
 	path_ := data["path"]
 
-	fmt.Println("Trigger: ", triggerText_)
-
 	result, err := YamlToStructModifier(triggerText_, serviceText_, method_,
 		path_)
-	fmt.Println(yaml.Marshal(&result))
 	if err != nil {
 		log.Fatalf("error: %v", err)
 	}
@@ -167,7 +161,6 @@ func createTriggersAndCapabilities(data map[string]string) bool {
 		yamlNode.Content[0].Content[appIdx].Content, result.Content[0])
 	yamlNode.Content[0].Content[appIdxCapabilities].Content = append(
 		yamlNode.Content[0].Content[appIdxCapabilities].Content, capabilitiesResult.Content[0])
-	fmt.Println("OK: ", result.Content[0])
 
 	out, err := yaml.Marshal(&yamlNode)
 	if err != nil {
@@ -181,6 +174,8 @@ func createTriggersAndCapabilities(data map[string]string) bool {
 		fmt.Println(errFile_)
 		os.Exit(1)
 	}
+
+	log.Println("YAML File written successful!!")
 
 	return true
 }
