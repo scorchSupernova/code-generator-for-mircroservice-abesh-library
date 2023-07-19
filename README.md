@@ -7,7 +7,7 @@ You just need to give those informations, and code-gen will handle all other tas
 
 # Steps:
     1. Give necessary informations according to given sample.yaml file's keys.
-    2. After that, run go mod tidy to get all necesary libraries.
+    2. After that, run go mod tidy to get all necessary libraries.
     3. After that, just hit go run main.go and you are done.
 
 
